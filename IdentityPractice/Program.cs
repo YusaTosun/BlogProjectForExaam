@@ -29,16 +29,16 @@ namespace IdentityPractice
 
             }).AddEntityFrameworkStores<ContextDeneme>();
 
-            //builder.Services.ConfigureApplicationCookie(opt =>
-            //{
-            //    opt.Cookie.HttpOnly = true;
-            //    opt.Cookie.SameSite = SameSiteMode.Strict;
-            //    opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-            //    opt.Cookie.Name = "BlogCookie";
-            //    opt.ExpireTimeSpan = TimeSpan.FromDays(25);
-            //    opt.LoginPath = new PathString("/Home/SignIn");
+            builder.Services.ConfigureApplicationCookie(opt =>
+            {
+                opt.Cookie.HttpOnly = true;
+                opt.Cookie.SameSite = SameSiteMode.Strict;
+                opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                opt.Cookie.Name = "BlogCookie";
+                opt.ExpireTimeSpan = TimeSpan.FromDays(25);
+                opt.LoginPath = new PathString("/Login/SignIn");
 
-            //});
+            });
 
             var app = builder.Build();
 
