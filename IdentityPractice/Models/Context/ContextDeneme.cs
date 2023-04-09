@@ -1,5 +1,4 @@
-﻿using IdentityPractice.Configurations;
-using IdentityPractice.Entities;
+﻿using IdentityPractice.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -8,8 +7,6 @@ namespace IdentityPractice.Models.Context
 {
     public class ContextDeneme:IdentityDbContext<AppUser,AppRole,int>
     {
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Teacher> Teachers { get; set; }
         public DbSet<AppUser> Users { get; set; }
         public ContextDeneme(DbContextOptions<ContextDeneme> option) : base(option)
         {
@@ -18,11 +15,6 @@ namespace IdentityPractice.Models.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Student>().HasKey(x => x.StudentId);
-            builder.Entity<Student>().HasOne(x => x.Teacher).WithMany(x=>x.Students).HasForeignKey(x=>x.TeacherId);
-
-            builder.Entity<Teacher>().HasKey(x => x.TeacherId);
-
            base.OnModelCreating(builder);
 
             #region AppRole

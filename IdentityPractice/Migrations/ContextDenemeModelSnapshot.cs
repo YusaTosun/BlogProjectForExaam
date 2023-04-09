@@ -58,7 +58,9 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 1,
+
                             ConcurrencyStamp = "b4cd113c-bb8d-4c78-bc70-3a2946240e50",
+
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -66,7 +68,9 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 2,
+
                             ConcurrencyStamp = "35c0c68c-376d-4f2e-a983-15ac0dba186d",
+
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -152,7 +156,9 @@ namespace IdentityPractice.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
+
                             ConcurrencyStamp = "4bd535b6-9eda-4c80-8e93-1ff2d494263a",
+
                             Email = "yusatosun.yt@gmail.com",
                             EmailConfirmed = false,
                             Gender = "Erkek",
@@ -161,51 +167,6 @@ namespace IdentityPractice.Migrations
                             TwoFactorEnabled = false,
                             UserName = "yusa"
                         });
-                });
-
-            modelBuilder.Entity("IdentityPractice.Entities.Student", b =>
-                {
-                    b.Property<int>("StudentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"), 1L, 1);
-
-                    b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("StudentName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
-                    b.HasKey("StudentId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("IdentityPractice.Entities.Teacher", b =>
-                {
-                    b.Property<int>("TeacherId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeacherId"), 1L, 1);
-
-                    b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TeacherName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TeacherId");
-
-                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -318,17 +279,6 @@ namespace IdentityPractice.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityPractice.Entities.Student", b =>
-                {
-                    b.HasOne("IdentityPractice.Entities.Teacher", "Teacher")
-                        .WithMany("Students")
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Teacher");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("IdentityPractice.Entities.AppRole", null)
@@ -378,11 +328,6 @@ namespace IdentityPractice.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("IdentityPractice.Entities.Teacher", b =>
-                {
-                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }
