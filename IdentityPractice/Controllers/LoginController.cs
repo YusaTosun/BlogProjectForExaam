@@ -20,11 +20,7 @@ namespace IdentityPractice.Controllers
 			_signInManager = signInManager;
 			_roleManager = roleManager;
 		}
-		public IActionResult LoginPage()
-        {
-            return View();
-        }
-
+	
 		public IActionResult SignUp()
 		{
 
@@ -59,7 +55,7 @@ namespace IdentityPractice.Controllers
 					await _userManager.UpdateAsync(user);
 
 
-					return View("Index");
+					return View("Login","SignIn");
 				}
 
 				foreach (var error in identityResult.Errors)
@@ -73,7 +69,7 @@ namespace IdentityPractice.Controllers
 
 		public IActionResult SignIn(string returnUrl)
 		{
-			//ViewBag.ReturnUrl = returnUrl;
+			
 			return View(new UserSignInModel { ReturnUrl = returnUrl });
 		}
 
@@ -99,10 +95,10 @@ namespace IdentityPractice.Controllers
 					{
 						return RedirectToAction("AdminPanel");
 					}
-					else if (roles.Contains("Member"))
-					{
-						return RedirectToAction("Panel");
-					}
+					//else if (roles.Contains("Member"))
+					//{
+					//	return RedirectToAction("Panel");
+					//}
 
 					//Başarılı Giriş
 				}

@@ -4,16 +4,16 @@ namespace IdentityPractice.Models
 {
     public class UserCreateModel
     {
-        [Required(ErrorMessage ="Kullanıcı adı gereklidir")]
+        [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; }
-        [Required(ErrorMessage ="Email adresi gereklidir")]
-        [EmailAddress(ErrorMessage ="Lütfen uygun formatta bir e-mail giriniz")]
+        [Required(ErrorMessage ="Email address is required")]
+        [EmailAddress(ErrorMessage ="Please use an valid Mail Adress")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Parola giriniz")]
+        [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
-        [Required(ErrorMessage ="Parola giriniz")]
-        [Compare("Password",ErrorMessage ="Parolalar eşleşmiyor")]
+        [Required(ErrorMessage = "Password is required")]
+        [Compare("Password",ErrorMessage = "Passwords are not Match")]
         public string ConfirmPassword { get; set; }
         public string Gender { get; set; }
 
