@@ -1,0 +1,27 @@
+﻿@model UserSignInModel
+
+
+
+
+<form asp-action="SignIn" asp-controller="Home" method="post">
+    <input type="hidden" asp-for="@Model.ReturnUrl" />
+    <div class="form-control">
+        <label asp-for="Username">Username</label>
+        <input asp-for="Username" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="form-control">
+        <label asp-for="Password">Password</label>
+        <input type="password" asp-for="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    </div>
+
+    <div>
+        <button class="btn btn-success">Create</button>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div> @* todo:ALL mu modelOnly mi bıraksam ???*@
+
+</form>
