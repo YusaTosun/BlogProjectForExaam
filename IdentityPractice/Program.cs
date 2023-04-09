@@ -16,7 +16,8 @@ namespace IdentityPractice
             builder.Services.AddDbContext<ContextDeneme>(opt=>
             {
                 //opt.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
-                opt.UseSqlServer(builder.Configuration.GetConnectionString("DenizDbConnection"));
+                //opt.UseSqlServer(builder.Configuration.GetConnectionString("DenizDbConnection"));
+                opt.UseSqlServer(builder.Configuration.GetConnectionString("CadoDbConnection"));
             });
 
             builder.Services.AddIdentity<AppUser,AppRole>(opt=>
