@@ -1,189 +1,405 @@
-﻿body {
+﻿* {
     margin: 0;
-    color: #6a6f8c;
-    background: #09355f;
-    font: 600 16px/18px 'Open Sans',sans-serif;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
 }
 
-*, :after, :before {
-    box-sizing: border-box
+body {
+    background-color: #fff;
+    font-family: Montserrat;
+    overflow-x: hidden;
 }
 
-.clearfix:after, .clearfix:before {
-    content: '';
-    display: table
+article,
+aside,
+details,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block;
 }
 
-.clearfix:after {
-    clear: both;
-    display: block
-}
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
 a {
-    color: inherit;
-    text-decoration: none
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    text-decoration: none;
 }
 
-.login-wrap {
-    width: 100%;
-    margin: auto;
-    max-width: 525px;
-    min-height: 670px;
+img {
+    border: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.bg-illustration {
     position: relative;
-    background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
-    box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    height: 100vh;
+    width: 1194px;
+    background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center center scroll;
+    background-size: cover;
+    float: left;
+    -webkit-animation: bgslide 2.3s forwards;
+    animation: bgslide 2.3s forwards;
 }
 
-.login-html {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    padding: 90px 70px 50px 70px;
-    background: rgba(40,57,101,.9);
-}
+    .bg-illustration img {
+        width: 248px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        height: auto;
+        margin: 19px 0 0 25px;
+    }
 
-    .login-html .sign-in-htm,
-    .login-html .sign-up-htm {
-        top: 0;
+@-webkit-keyframes bgslide {
+    from {
+        left: -100%;
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
         left: 0;
-        right: 0;
-        bottom: 0;
-        position: absolute;
-        transform: rotateY(180deg);
-        backface-visibility: hidden;
-        transition: all .4s linear;
+        width: 1194px;
+        opacity: 1;
     }
-
-    .login-html .sign-in,
-    .login-html .sign-up,
-    .login-form .group .check {
-        display: none;
-    }
-
-    .login-html .tab,
-    .login-form .group .label,
-    .login-form .group .button {
-        text-transform: uppercase;
-    }
-
-    .login-html .tab {
-        font-size: 22px;
-        margin-right: 15px;
-        padding-bottom: 5px;
-        margin: 0 15px 10px 0;
-        display: inline-block;
-        border-bottom: 2px solid transparent;
-    }
-
-    .login-html .sign-in:checked + .tab,
-    .login-html .sign-up:checked + .tab {
-        color: #fff;
-        border-color: #1161ee;
-    }
-
-.login-form {
-    min-height: 345px;
-    position: relative;
-    perspective: 1000px;
-    transform-style: preserve-3d;
 }
 
-    .login-form .group {
-        margin-bottom: 15px;
+@keyframes bgslide {
+    from {
+        left: -100%;
+        width: 0;
+        opacity: 0;
     }
 
-        .login-form .group .label,
-        .login-form .group .input,
-        .login-form .group .button {
-            width: 100%;
-            color: #fff;
-            display: block;
+    to {
+        left: 0;
+        width: 1194px;
+        opacity: 1;
+    }
+}
+
+
+.login {
+    max-height: 100vh;
+    overflow-Y: auto;
+    float: left;
+    margin: 0 auto;
+    width: calc(100% - 1194px);
+}
+
+    .login .container {
+        width: 505px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+        .login .container h1 {
+            margin-top: 100px;
+            font-size: 35px;
+            font-weight: bolder;
         }
 
-        .login-form .group .input,
-        .login-form .group .button {
-            border: none;
-            padding: 15px 20px;
-            border-radius: 25px;
-            background: rgba(255,255,255,.1);
+        .login .container .login-form {
+            margin-top: 112px;
         }
 
-        .login-form .group input[data-type="password"] {
-            text-security: circle;
-            -webkit-text-security: circle;
-        }
+            .login .container .login-form form {
+                display: -ms-grid;
+                display: grid;
+            }
 
-        .login-form .group .label {
-            color: #aaa;
-            font-size: 12px;
-        }
+                .login .container .login-form form input {
+                    font-size: 16px;
+                    font-weight: normal;
+                    background: rgba(57, 57, 57, 0.07);
+                    margin: 12.5px 0;
+                    height: 68px;
+                    border: none;
+                    padding: 0 30px;
+                    border-radius: 10px;
+                }
 
-        .login-form .group .button {
-            background: #1161ee;
-        }
+                .login .container .login-form form button[type=submit] {
+                    background: -webkit-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
+                    background: -o-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
+                    background: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
+                    border: none;
+                    margin-top: 124px;
+                    margin-bottom: 20px;
+                    width: 241px;
+                    height: 58px;
+                    text-transform: uppercase;
+                    color: white;
+                    border-radius: 10px;
+                    position: relative;
+                    z-index: 2;
+                    font-weight: bold;
+                    font-size: 20px;
+                }
 
-        .login-form .group label .icon {
-            width: 15px;
-            height: 15px;
-            border-radius: 2px;
+                    .login .container .login-form form button[type=submit]:hover::after {
+                        opacity: 1;
+                    }
+
+                    .login .container .login-form form button[type=submit]::after {
+                        content: "";
+                        position: absolute;
+                        z-index: -1;
+                        border-radius: 10px;
+                        opacity: 0;
+                        top: 0;
+                        left: 0;
+                        -webkit-transition: 0.3s ease-in-out;
+                        -o-transition: 0.3s ease-in-out;
+                        transition: 0.3s ease-in-out;
+                        right: 0;
+                        bottom: 0;
+                        background: -webkit-gradient(linear, left bottom, left top, from(#09203f), to(#537895));
+                        background: -webkit-linear-gradient(bottom, #09203f 0%, #537895 100%);
+                        background: -o-linear-gradient(bottom, #09203f 0%, #537895 100%);
+                        background: linear-gradient(to top, #09203f 0%, #537895 100%);
+                    }
+
+        .login .container .remember-form {
             position: relative;
-            display: inline-block;
-            background: rgba(255,255,255,.1);
+            margin-top: -30px;
         }
 
-            .login-form .group label .icon:before,
-            .login-form .group label .icon:after {
-                content: '';
-                width: 10px;
-                height: 2px;
-                background: #fff;
+            .login .container .remember-form input[type=checkbox] {
+                margin-top: 9px;
+            }
+
+            .login .container .remember-form span {
+                font-size: 18px;
+                font-weight: normal;
                 position: absolute;
-                transition: all .2s ease-in-out 0s;
+                top: 32px;
+                color: #3B3B3B;
+                margin-left: 15px;
             }
 
-            .login-form .group label .icon:before {
-                left: 3px;
-                width: 5px;
-                bottom: 6px;
-                transform: scale(0) rotate(0);
-            }
-
-            .login-form .group label .icon:after {
-                top: 6px;
-                right: 0;
-                transform: scale(0) rotate(0);
-            }
-
-        .login-form .group .check:checked + label {
-            color: #fff;
+        .login .container .forget-pass {
+            position: absolute;
+            right: 0;
+            margin-top: 189px;
         }
 
-            .login-form .group .check:checked + label .icon {
-                background: #1161ee;
+            .login .container .forget-pass a {
+                font-size: 16px;
+                position: relative;
+                font-weight: normal;
+                color: #918F8F;
             }
 
-                .login-form .group .check:checked + label .icon:before {
-                    transform: scale(1) rotate(45deg);
+                .login .container .forget-pass a::after {
+                    content: "";
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    border-radius: 100px;
+                    background: -webkit-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
+                    background: -o-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
+                    background: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
+                    bottom: -4px;
+                    left: 0;
+                    -webkit-transition: 0.3s;
+                    -o-transition: 0.3s;
+                    transition: 0.3s;
+                    opacity: 0;
+                    right: 0;
                 }
 
-                .login-form .group .check:checked + label .icon:after {
-                    transform: scale(1) rotate(-45deg);
+                .login .container .forget-pass a:hover::after {
+                    opacity: 1;
                 }
 
-.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm {
-    transform: rotate(0);
-}
+@media only screen and (min-width: 1024px) and (max-width: 1680px) {
+    .bg-illustration {
+        width: 50%;
+        -webkit-animation: none;
+        animation: none;
+    }
 
-.login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
-    transform: rotate(0);
+    .login {
+        width: 50%;
+    }
 }
+/* Display 12", iPad PRO Portrait, iPad landscape */
+@media only screen and (max-width: 1024px) {
+    body {
+        overflow-x: hidden;
+    }
 
-.hr {
-    height: 2px;
-    margin: 60px 0 50px 0;
-    background: rgba(255,255,255,.2);
-}
+    @-webkit-keyframes slideIn {
+        from {
+            left: -100%;
+            opacity: 0;
+        }
 
-.foot-lnk {
-    text-align: center;
+        to {
+            left: 0;
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            left: -100%;
+            opacity: 0;
+        }
+
+        to {
+            left: 0;
+            opacity: 1;
+        }
+    }
+
+    .bg-illustration {
+        float: none;
+        background: url("https://i.ibb.co/rwncw7s/bg-mobile.png") center center;
+        background-size: cover;
+        -webkit-animation: slideIn 0.8s ease-in-out forwards;
+        animation: slideIn 0.8s ease-in-out forwards;
+        width: 100%;
+        height: 190px;
+        text-align: center;
+    }
+
+        .bg-illustration img {
+            width: 100px;
+            height: auto;
+            margin: 20px auto !important;
+            text-align: center;
+        }
+
+        .bg-illustration .burger-btn {
+            left: 33px;
+            top: 29px;
+            display: block;
+            position: absolute;
+        }
+
+            .bg-illustration .burger-btn span {
+                display: block;
+                height: 4px;
+                margin: 6px;
+                background-color: #fff;
+            }
+
+                .bg-illustration .burger-btn span:nth-child(1) {
+                    width: 37px;
+                }
+
+                .bg-illustration .burger-btn span:nth-child(2) {
+                    width: 28px;
+                }
+
+                .bg-illustration .burger-btn span:nth-child(3) {
+                    width: 20px;
+                }
+
+    .login {
+        float: none;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+        .login .container {
+            -webkit-animation: slideIn 0.8s ease-in-out forwards;
+            animation: slideIn 0.8s ease-in-out forwards;
+            width: 85%;
+            float: none;
+        }
+
+            .login .container h1 {
+                font-size: 25px;
+                margin-top: 40px;
+            }
+
+            .login .container .login-form {
+                margin-top: 90px;
+            }
+
+                .login .container .login-form form input {
+                    height: 45px;
+                }
+
+                .login .container .login-form form button[type=submit] {
+                    height: 45px;
+                    margin-top: 100px;
+                }
+
+                .login .container .login-form .remember-form {
+                    position: relative;
+                    margin-top: -14px;
+                }
+
+                    .login .container .login-form .remember-form span {
+                        font-size: 16px;
+                        margin-top: 22px;
+                        top: inherit;
+                    }
+
+    .forget-pass {
+        position: absolute;
+        right: inherit;
+        left: 0;
+        bottom: -40px;
+        margin: 0 !important;
+    }
+
+        .forget-pass a {
+            font-size: 16px;
+            position: relative;
+            font-weight: normal;
+            color: #918F8F;
+        }
+
+            .forget-pass a::after {
+                content: "";
+                position: absolute;
+                height: 2px;
+                width: 100%;
+                border-radius: 100px;
+                background: -webkit-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
+                background: -o-linear-gradient(110deg, #f794a4 0%, #fdd6bd 100%);
+                background: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
+                bottom: -4px;
+                left: 0;
+                -webkit-transition: 0.3s;
+                -o-transition: 0.3s;
+                transition: 0.3s;
+                opacity: 0;
+                right: 0;
+            }
+
+            .forget-pass a:hover::after {
+                opacity: 1;
+            }
 }

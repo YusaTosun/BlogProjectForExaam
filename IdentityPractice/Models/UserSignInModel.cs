@@ -5,10 +5,11 @@ namespace IdentityPractice.Models
 {
     public class UserSignInModel
     {
-        [Required(ErrorMessage="Kullanıcı adı gerekli")]
+        [Required(ErrorMessage= "Username is Required")]
         public string Username { get; set; }
-        [Required(ErrorMessage = "Parola gerekli")]
+        [Required(ErrorMessage = "Password is Required")]
         public string Password { get; set; }
         public string ReturnUrl { get; set; }
+        public bool RememberMe { get; set; }
     }
 }

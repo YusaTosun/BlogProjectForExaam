@@ -24,16 +24,6 @@ namespace IdentityPractice.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -42,37 +32,25 @@ namespace IdentityPractice.Controllers
 
 
 
-        [Authorize()]
-        public IActionResult GetUserInfo()
-        {
-            var userName = User.Identity.Name;
-            var role = User.Claims.FirstOrDefault(x=>x.Type==ClaimTypes.Role); // buraya detaylıca bak
+        //[Authorize()]  
+        //public IActionResult GetUserInfo()
+        //{
+        //    var userName = User.Identity.Name;
+        //    var role = User.Claims.FirstOrDefault(x=>x.Type==ClaimTypes.Role); // buraya detaylıca bak
 
-            User.IsInRole("Member");
-            return View();
-        }
-
+        //    User.IsInRole("Member");
+        //    return View();
+        //}
 
         [Authorize(Roles ="Admin")]
         public IActionResult AdminPanel()
         {
             return View();
         }
-
+      
         [Authorize(Roles = "Member")]
-        public IActionResult Panel()
-        {
-            return View();   //// todo:bu actiona girmiyor.View'ı bulamıyor neden ?????
-        }
 
-        [Authorize(Roles ="Member")]
-        public IActionResult MemberPage() 
-        {
-            return View();
-
-		}
-
-		public IActionResult HomePage()
+        public IActionResult HomePage()
         {
             return View();
 
