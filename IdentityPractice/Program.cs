@@ -61,7 +61,7 @@ namespace IdentityPractice
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Login}/{action=LoginPage}/{id?}");
+                pattern: "{controller=home}/{action=homepage}/{id?}");
 
             app.Run();
         }

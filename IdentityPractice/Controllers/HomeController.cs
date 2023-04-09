@@ -68,9 +68,15 @@ namespace IdentityPractice.Controllers
         [Authorize(Roles ="Member")]
         public IActionResult MemberPage() 
         {
-        
             return View();
-        }
 
-    }
+		}
+
+		public IActionResult HomePage()
+        {
+            return View();
+
+		}
+
+	}
 }
