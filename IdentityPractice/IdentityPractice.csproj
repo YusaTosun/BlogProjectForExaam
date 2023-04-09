@@ -34,4 +34,8 @@
     <None Include="Views\Home\Panel.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Configurations\" />
+  </ItemGroup>
+
 </Project>
