@@ -38,6 +38,9 @@ namespace IdentityPractice.Models.Context
 
             #region Post
             builder.Entity<Post>().HasData(new Post { AuthorId = 1, Status = true, CategoryId = 1, Content = "Lorem1", PostId = 1, Title = "Title1" });
+            builder.Entity<Post>().HasData(new Post { AuthorId = 1, Status = true, CategoryId = 2, Content = "Lorem2", PostId = 2, Title = "Title2" });
+            builder.Entity<Post>().HasData(new Post { AuthorId = 1, Status = true, CategoryId = 3, Content = "Lorem3", PostId = 3, Title = "Title3" });
+            builder.Entity<Post>().HasData(new Post { AuthorId = 1, Status = true, CategoryId = 3, Content = "Lorem4", PostId = 4, Title = "Title4" });
             #endregion
             #region Category
 

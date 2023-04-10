@@ -62,7 +62,7 @@ namespace IdentityPractice.Controllers
             //AppUser user = await _userManager.GetUserAsync(HttpContext.User);
 
 			postVM.Posts = _db.Posts.Include(x => x.Comments).Include(x => x.Category).ToList();
-
+            postVM.Categories = _db.Categories.ToList();
 			_db.Comments.ToList();
             _db.Categories.ToList();
 
@@ -74,8 +74,8 @@ namespace IdentityPractice.Controllers
         [HttpPost]
         public IActionResult CategoryList(PostVM postVM,int CategoryId)
         {
-			postVM.Posts = _db.Posts.Include(x => x.Comments).Include(x => x.Category).Where(x=>x.CategoryId.Equals(CategoryId)).ToList();
-
+            postVM.Posts = _db.Posts.Include(x => x.Category).Where(x => x.CategoryId.Equals(CategoryId)).ToList();
+			postVM.Categories = _db.Categories.ToList();
 
 
 
@@ -85,8 +85,8 @@ namespace IdentityPractice.Controllers
 
         public IActionResult PostPage(int postid)
         {
-            Post post = _db.Posts.Include(x => x.Comments).Where(x => x.Equals(postid)).FirstOrDefault();
-            return View(post);
+            //Post post = _db.Posts.Include(x => x.Comments).Where(x => x.Equals(postid)).FirstOrDefault();
+            return View(/*post*/);
         }
 
     }
