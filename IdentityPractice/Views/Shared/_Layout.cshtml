@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Text
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,7 +33,15 @@
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="GetUserInfo" asp-route-returnUrl="/">Get User Info</a>
                         </li>
-
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="EditProfile" asp-route-returnUrl="/">Edit Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

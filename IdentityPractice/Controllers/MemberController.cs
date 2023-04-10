@@ -56,11 +56,12 @@ namespace IdentityPractice.Controllers
 		public async Task<IActionResult> EditProfile()
         {
 			AppUser user = await _userManager.GetUserAsync(HttpContext.User);
-            UserCreateModel userCM = new UserCreateModel { Email = user.Email, Gender=user.Gender, ProfilePhoto=user.ProfilePhoto, Username=user.UserName };
-			return View(userCM);
+            UserCreateModel userCM = new UserCreateModel { Email = user.Email, Gender = user.Gender, ProfilePhoto = user.ProfilePhoto, Username = user.UserName, User=user };
+
+            return View(userCM);
 		}
 		[HttpPost]
-		public async Task<IActionResult> EditProfile(UserCreateModel userCM, IFormFile photo = null)
+		public async Task<IActionResult> EditProfile(UserCreateModel userCM, IFormFile photo ,string about)
 		{
 			if (ModelState.IsValid)
 			{
@@ -69,7 +70,7 @@ namespace IdentityPractice.Controllers
                 user.UserName = userCM.Username;
                 user.Email = userCM.Email;
 				user.Gender = userCM.Gender;
-
+                user.About = about;
 
 				//IdentityUserRole<int> identityUserRole=  new IdentityUserRole<int> { RoleId=2,UserId=user.Id};
 
