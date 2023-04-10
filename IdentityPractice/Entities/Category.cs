@@ -1,7 +1,9 @@
-﻿using System.Reflection.Metadata;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata;
 
 namespace IdentityPractice.Entities
 {
+
     public class Category
     {
         public int CategoryId { get; set; }

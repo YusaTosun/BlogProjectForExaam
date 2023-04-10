@@ -1,5 +1,9 @@
-﻿namespace IdentityPractice.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdentityPractice.Entities
 {
+
+
     public class Post
     {
         public int PostId { get; set; }
@@ -14,7 +18,7 @@
         public bool Status { get; set; }
         public Post()
         {
-            Comments= new List<Comment>();
+            Comments = new List<Comment>();
         }
 
     }

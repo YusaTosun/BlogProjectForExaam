@@ -1,5 +1,8 @@
-﻿namespace IdentityPractice.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdentityPractice.Entities
 {
+
     public class Comment
     {
         public int CommentId { get; set; }
