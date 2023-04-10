@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityPractice.Controllers
 {
@@ -17,9 +19,9 @@ namespace IdentityPractice.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ILogger<HomeController> _logger;
-        public ContextDeneme _db;
+        private readonly ContextDeneme _db;
 
-        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userManager,SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager,ContextDeneme db)
+        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, ContextDeneme db)
         {
             _logger = logger;
             _userManager = userManager;
@@ -46,23 +48,23 @@ namespace IdentityPractice.Controllers
         //    return View();
         //}
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminPanel()
         {
             return View();
         }
-      
+
         [Authorize(Roles = "Member")]
 
-        public IActionResult HomePage(PostVM postVM )
+        public IActionResult HomePage(PostVM postVM)
         {
-            
-            
-            
 
-            return View();
+            postVM.Posts = _db.Posts.Include(x=>x.Comments).ToList();
+            _db.Comments.ToList();
 
-		}
+            return View(postVM);
 
-	}
+        }
+
+    }
 }

@@ -4,6 +4,7 @@ using IdentityPractice.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityPractice.Migrations
 {
     [DbContext(typeof(ContextDeneme))]
-    partial class ContextDenemeModelSnapshot : ModelSnapshot
+    [Migration("20230410094525_mig_database_refresh")]
+    partial class mig_database_refresh
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,9 +60,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 1,
-
-                            ConcurrencyStamp = "95d54986-41dc-4b3a-8fc9-732ddaf6eff9",
-
+                            ConcurrencyStamp = "4e48524f-b0be-4085-88ed-749c808fff1a",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -68,9 +68,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 2,
-
-                            ConcurrencyStamp = "58479c74-cc46-48e9-8fd7-a7d26fb35dce",
-
+                            ConcurrencyStamp = "a5bc37f5-f139-44bd-b1a4-8ab6f45ea9fc",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -168,9 +166,7 @@ namespace IdentityPractice.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-
-                            ConcurrencyStamp = "75fcc7c0-d726-476c-9976-f2fae7f87b4f",
-
+                            ConcurrencyStamp = "fc106d3b-501e-4f9f-ad8c-14dfd2b4bbb3",
                             Email = "yusatosun.yt@gmail.com",
                             EmailConfirmed = false,
                             Gender = "Erkek",
@@ -203,7 +199,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("IdentityPractice.Entities.Comment", b =>
@@ -239,15 +235,13 @@ namespace IdentityPractice.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("IdentityPractice.Entities.Post", b =>
                 {
                     b.Property<int>("PostId")
-
                         .HasColumnType("int");
-
 
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
@@ -273,9 +267,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasIndex("AuthorId");
 
-
-                    b.ToTable("Posts");
-
+                    b.ToTable("Post");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -397,11 +389,9 @@ namespace IdentityPractice.Migrations
                         .IsRequired();
 
                     b.HasOne("IdentityPractice.Entities.AppUser", "User")
-
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
-
                         .IsRequired();
 
                     b.Navigation("Post");
@@ -419,9 +409,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasOne("IdentityPractice.Entities.Category", "Category")
                         .WithMany("Posts")
-
                         .HasForeignKey("PostId")
-
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -483,6 +471,7 @@ namespace IdentityPractice.Migrations
 
             modelBuilder.Entity("IdentityPractice.Entities.AppUser", b =>
                 {
+                    b.Navigation("Comments");
 
                     b.Navigation("Posts");
                 });
