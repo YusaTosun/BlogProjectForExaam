@@ -43,16 +43,12 @@
 												<nav class="nav nav-pills nav-gap-y-1 flex-column">
 													@*----Burası Sorgu ile yazılar içinde getirebileceğimiz bir yer.----*@
 
-													@foreach (var post in Model.Posts)
+													@foreach (var category in Model.Categories)
 													{
-														<form asp-action="CategoryList" asp-controller="Home" asp-route-CategoryId=@post.CategoryId method="post">
-															<input type="submit" value="@post.Category.Name"  class="btn btn-primary" />
+														<form asp-action="CategoryList" asp-controller="Home" asp-route-CategoryId=@category.CategoryId method="post">
+															<input type="submit" value="@category.Name"  class="btn btn-primary" />
 														</form>
 													}
-
-													<form asp-action="CategoryList" asp-controller="Home" asp-route-CategoryId=5 method="post">
-														<input type="submit" value="sahjdasd"  class="btn btn-primary" />
-													</form>
 
 													@*---------------SORGU---------------*@
 												</nav>

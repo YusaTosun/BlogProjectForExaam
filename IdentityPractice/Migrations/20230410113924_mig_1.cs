@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IdentityPractice.Migrations
 {
-    public partial class init : Migration
+    public partial class mig_1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -239,22 +239,43 @@ namespace IdentityPractice.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedTime", "Name", "NormalizedName" },
-                values: new object[] { 1, "f117600f-9859-4391-9cd0-4e0f177f083b", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "ADMIN" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "CreatedTime", "Name", "NormalizedName" },
-                values: new object[] { 2, "832f52d4-8b4e-4fa5-b038-a912921847f7", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Member", "MEMBER" });
+                values: new object[,]
+                {
+                    { 1, "097bb863-21c3-4768-a852-09c236f11433", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "ADMIN" },
+                    { 2, "7464aec9-7bc9-468e-8c87-e7ae65def32c", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Member", "MEMBER" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "About", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "Gender", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePhoto", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, null, 0, null, "7b7e2a11-00c2-4061-9c3d-6001825764fb", "yusatosun.yt@gmail.com", false, "Erkek", false, null, null, null, null, null, null, false, null, null, null, false, "yusa" });
+                values: new object[] { 1, null, 0, null, "16786a76-1b1f-48b2-9014-65e1a486b016", "yusatosun.yt@gmail.com", false, "Erkek", false, null, null, null, null, null, null, false, null, null, null, false, "yusa" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "Description", "Name", "Status" },
+                values: new object[,]
+                {
+                    { 1, "Açıklama", "Bilim", true },
+                    { 2, "Açıklama", "Teknoloji", true },
+                    { 3, "Açıklama", "Tarih", true },
+                    { 4, "Açıklama", "Sinema", true }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[] { 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Posts",
+                columns: new[] { "PostId", "AuthorId", "CategoryId", "Content", "Date", "Status", "Title" },
+                values: new object[,]
+                {
+                    { 1, 1, 1, "Lorem1", new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2762), true, "Title1" },
+                    { 2, 1, 2, "Lorem2", new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2782), true, "Title2" },
+                    { 3, 1, 3, "Lorem3", new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2788), true, "Title3" },
+                    { 4, 1, 3, "Lorem4", new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2793), true, "Title4" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

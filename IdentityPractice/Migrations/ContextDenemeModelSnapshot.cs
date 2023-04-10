@@ -58,7 +58,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "f117600f-9859-4391-9cd0-4e0f177f083b",
+                            ConcurrencyStamp = "097bb863-21c3-4768-a852-09c236f11433",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -66,7 +66,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "832f52d4-8b4e-4fa5-b038-a912921847f7",
+                            ConcurrencyStamp = "7464aec9-7bc9-468e-8c87-e7ae65def32c",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -164,7 +164,7 @@ namespace IdentityPractice.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7b7e2a11-00c2-4061-9c3d-6001825764fb",
+                            ConcurrencyStamp = "16786a76-1b1f-48b2-9014-65e1a486b016",
                             Email = "yusatosun.yt@gmail.com",
                             EmailConfirmed = false,
                             Gender = "Erkek",
@@ -197,6 +197,36 @@ namespace IdentityPractice.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            Description = "Açıklama",
+                            Name = "Bilim",
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            Description = "Açıklama",
+                            Name = "Teknoloji",
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            Description = "Açıklama",
+                            Name = "Tarih",
+                            Status = true
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            Description = "Açıklama",
+                            Name = "Sinema",
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("IdentityPractice.Entities.Comment", b =>
@@ -265,6 +295,48 @@ namespace IdentityPractice.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Posts");
+
+                    b.HasData(
+                        new
+                        {
+                            PostId = 1,
+                            AuthorId = 1,
+                            CategoryId = 1,
+                            Content = "Lorem1",
+                            Date = new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2762),
+                            Status = true,
+                            Title = "Title1"
+                        },
+                        new
+                        {
+                            PostId = 2,
+                            AuthorId = 1,
+                            CategoryId = 2,
+                            Content = "Lorem2",
+                            Date = new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2782),
+                            Status = true,
+                            Title = "Title2"
+                        },
+                        new
+                        {
+                            PostId = 3,
+                            AuthorId = 1,
+                            CategoryId = 3,
+                            Content = "Lorem3",
+                            Date = new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2788),
+                            Status = true,
+                            Title = "Title3"
+                        },
+                        new
+                        {
+                            PostId = 4,
+                            AuthorId = 1,
+                            CategoryId = 3,
+                            Content = "Lorem4",
+                            Date = new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2793),
+                            Status = true,
+                            Title = "Title4"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
