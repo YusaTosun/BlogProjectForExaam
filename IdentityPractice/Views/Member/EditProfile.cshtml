@@ -42,9 +42,9 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label asp-for="Username" class="label">user name</label>
-                                    <input asp-for="Username" class="input--style-4" type="text" name="userName">
-                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                    <label asp-for="User.UserName" class="label">user name</label>
+                                    <input asp-for="User.UserName" class="input--style-4" type="text" name="userName">
+                                    <span asp-validation-for="User.UserName" class="text-danger"></span>
                                 </div>
                             </div>
                             @*<div class="col-2">
@@ -59,28 +59,14 @@
                                 <input asp-for="Password" class="input--style-4" type="text" name="password">
                                 </div>*@
                             </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label asp-for="Password" class="label">Password</label>
-                                    <input asp-for="Password" class="input--style-4" type="text" name="password">
-                                    <span asp-validation-for="Password" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label asp-for="ConfirmPassword" class="label">Confirm Password</label>
-                                    <input asp-for="ConfirmPassword" class="input--style-4" type="text" name="confirmPassword">
-                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                                </div>
-                            </div>
                         </div>
                         <div class="row row-space">
 
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label asp-for="Email" class="label">Email</label>
-                                    <input asp-for="Email" class="input--style-4" type="email" name="email">
-                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                    <label asp-for="User.Email" class="label">Email</label>
+                                    <input asp-for="User.Email" class="input--style-4" type="email" name="email">
+                                    <span asp-validation-for="User.Email" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -120,6 +106,10 @@
                                 <label class="label">Upload Profile Photo</label>
                                 <input type="file" name="photo" accept="image/*" />
                             </div>
+                        </div>
+                        <div class="row row-space">
+                            <label class="label">Write About Yourself</label>
+                            <textarea class="form-control" rows="4" name="about">@Model.About</textarea>
                         </div>
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>

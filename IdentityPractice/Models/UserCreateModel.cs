@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using IdentityPractice.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace IdentityPractice.Models
 {
@@ -17,5 +18,7 @@ namespace IdentityPractice.Models
         public string ConfirmPassword { get; set; }
         public string Gender { get; set; }
         public byte[]? ProfilePhoto { get; set; }
+        public string? About { get; set; }
+        public AppUser User { get; set; }
     }
 }
