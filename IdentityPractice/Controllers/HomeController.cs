@@ -70,6 +70,7 @@ namespace IdentityPractice.Controllers
 
         }
 
+
         [HttpPost]
         public IActionResult CategoryList(PostVM postVM,int CategoryId)
         {
@@ -79,6 +80,13 @@ namespace IdentityPractice.Controllers
 
 
 			return View("HomePage",postVM);
+        }
+
+
+        public IActionResult PostPage(int postid)
+        {
+            Post post = _db.Posts.Include(x => x.Comments).Where(x => x.Equals(postid)).FirstOrDefault();
+            return View(post);
         }
 
     }
