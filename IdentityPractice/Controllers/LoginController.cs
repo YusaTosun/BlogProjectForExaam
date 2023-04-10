@@ -55,7 +55,7 @@ namespace IdentityPractice.Controllers
 					await _userManager.UpdateAsync(user);
 
 
-					return View("Login","SignIn");
+					return RedirectToAction("SignIn", "Login");
 				}
 
 				foreach (var error in identityResult.Errors)

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityPractice.Migrations
 {
     [DbContext(typeof(ContextDeneme))]
-    [Migration("20230410081352_mig_database_refresh4")]
-    partial class mig_database_refresh4
+    [Migration("20230410083822_mig_database_refresh1")]
+    partial class mig_database_refresh1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,7 +60,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "35abf4ac-fec5-48b0-99b2-f6b4bb756368",
+                            ConcurrencyStamp = "ef62ca36-1248-4d07-a945-1d5e75630510",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -68,7 +68,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "0da7bdf3-5cbb-4e9d-af09-26da4f23f9f3",
+                            ConcurrencyStamp = "6bea5ba8-e368-4911-8951-b2b6b1d17f98",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -166,7 +166,7 @@ namespace IdentityPractice.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8a4c26ee-5438-42ec-992f-01369f359188",
+                            ConcurrencyStamp = "2c059fd4-821e-47ab-bcd9-5e7c52eb2902",
                             Email = "yusatosun.yt@gmail.com",
                             EmailConfirmed = false,
                             Gender = "Erkek",
