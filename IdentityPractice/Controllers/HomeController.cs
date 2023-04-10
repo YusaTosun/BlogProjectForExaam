@@ -87,8 +87,8 @@ namespace IdentityPractice.Controllers
 
         public IActionResult PostPage(int postid)
         {
-            Post post = _db.Posts.Include(x => x.Comments).Where(x => x.Equals(postid)).FirstOrDefault();
-            return View(post);
+            //Post post = _db.Posts.Include(x => x.Comments).Where(x => x.Equals(postid)).FirstOrDefault();
+            return View(/*post*/);
         }
 
     }
