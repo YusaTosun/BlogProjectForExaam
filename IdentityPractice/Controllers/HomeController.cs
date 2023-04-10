@@ -38,23 +38,24 @@ namespace IdentityPractice.Controllers
 
 
 
-        //[Authorize()]  
-        //public IActionResult GetUserInfo()
-        //{
-        //    var userName = User.Identity.Name;
-        //    var role = User.Claims.FirstOrDefault(x=>x.Type==ClaimTypes.Role); // buraya detaylıca bak
+		//[Authorize()]  
+		//public IActionResult GetUserInfo()
+		//{
+		//    var userName = User.Identity.Name;
+		//    var role = User.Claims.FirstOrDefault(x=>x.Type==ClaimTypes.Role); // buraya detaylıca bak
 
-        //    User.IsInRole("Member");
-        //    return View();
-        //}
+		//    User.IsInRole("Member");
+		//    return View();
+		//}
 
-        [Authorize(Roles = "Admin")]
-        public IActionResult AdminPanel()
+		[Authorize(Roles = "Admin")]
+
+		public IActionResult AdminPanel()
         {
             return View();
         }
 
-        [Authorize(Roles = "Member")]
+        [Authorize(Roles = "Member,Admin")]
 
         public async Task<IActionResult> HomePage(PostVM postVM)
         {

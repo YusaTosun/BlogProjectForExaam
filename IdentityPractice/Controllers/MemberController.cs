@@ -8,8 +8,8 @@ namespace IdentityPractice.Controllers
     public class MemberController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
+		private readonly UserManager<AppUser> _userManager;
+		private readonly SignInManager<AppUser> _signInManager;
         public async Task<IActionResult> Index()
         {
             AppUser user = await _userManager.GetUserAsync(HttpContext.User);
