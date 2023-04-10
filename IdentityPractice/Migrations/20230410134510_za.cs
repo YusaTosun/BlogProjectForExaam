@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IdentityPractice.Migrations
 {
-    public partial class mig_1 : Migration
+    public partial class za : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -182,7 +182,8 @@ namespace IdentityPractice.Migrations
                 name: "Posts",
                 columns: table => new
                 {
-                    PostId = table.Column<int>(type: "int", nullable: false),
+                    PostId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AuthorId = table.Column<int>(type: "int", nullable: false),
@@ -200,8 +201,8 @@ namespace IdentityPractice.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Posts_Categories_PostId",
-                        column: x => x.PostId,
+                        name: "FK_Posts_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
@@ -241,14 +242,14 @@ namespace IdentityPractice.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedTime", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "097bb863-21c3-4768-a852-09c236f11433", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "ADMIN" },
-                    { 2, "7464aec9-7bc9-468e-8c87-e7ae65def32c", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Member", "MEMBER" }
+                    { 1, "dfc29d62-4f75-4f3b-a4ff-a8adfbb132b3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "ADMIN" },
+                    { 2, "7ab8f89f-a7a6-45c5-bc07-a5bd53419441", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Member", "MEMBER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "About", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "Gender", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePhoto", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, null, 0, null, "16786a76-1b1f-48b2-9014-65e1a486b016", "yusatosun.yt@gmail.com", false, "Erkek", false, null, null, null, null, null, null, false, null, null, null, false, "yusa" });
+                values: new object[] { 1, null, 0, null, "760aaa51-4db9-40f8-98a1-f35b09a54473", "yusatosun.yt@gmail.com", false, "Erkek", false, null, null, null, null, null, null, false, null, null, null, false, "yusa" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
@@ -271,10 +272,10 @@ namespace IdentityPractice.Migrations
                 columns: new[] { "PostId", "AuthorId", "CategoryId", "Content", "Date", "Status", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, "Lorem1", new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2762), true, "Title1" },
-                    { 2, 1, 2, "Lorem2", new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2782), true, "Title2" },
-                    { 3, 1, 3, "Lorem3", new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2788), true, "Title3" },
-                    { 4, 1, 3, "Lorem4", new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2793), true, "Title4" }
+                    { 1, 1, 1, "Lorem1", new DateTime(2023, 4, 10, 16, 45, 9, 767, DateTimeKind.Local).AddTicks(6004), true, "Title1" },
+                    { 2, 1, 2, "Lorem2", new DateTime(2023, 4, 10, 16, 45, 9, 767, DateTimeKind.Local).AddTicks(6116), true, "Title2" },
+                    { 3, 1, 3, "Lorem3", new DateTime(2023, 4, 10, 16, 45, 9, 767, DateTimeKind.Local).AddTicks(6127), true, "Title3" },
+                    { 4, 1, 3, "Lorem4", new DateTime(2023, 4, 10, 16, 45, 9, 767, DateTimeKind.Local).AddTicks(6137), true, "Title4" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -330,6 +331,11 @@ namespace IdentityPractice.Migrations
                 name: "IX_Posts_AuthorId",
                 table: "Posts",
                 column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Posts_CategoryId",
+                table: "Posts",
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

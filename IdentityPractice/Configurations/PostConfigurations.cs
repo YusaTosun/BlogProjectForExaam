@@ -11,6 +11,7 @@ namespace IdentityPractice.Configurations
             builder.HasKey(x=>x.PostId);
             
             builder.HasOne(x=>x.Author).WithMany(x=>x.Posts).HasForeignKey(x=>x.AuthorId);
-        }
+			builder.HasOne(x => x.Category).WithMany(x => x.Posts).HasForeignKey(x => x.CategoryId);
+		}
     }
 }

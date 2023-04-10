@@ -59,8 +59,6 @@ namespace IdentityPractice.Controllers
 
         public async Task<IActionResult> HomePage(PostVM postVM)
         {
-
-
             //AppUser user = await _userManager.GetUserAsync(HttpContext.User);
 
 			postVM.Posts = _db.Posts.Include(x => x.Comments).Include(x => x.Category).ToList();
@@ -86,10 +84,30 @@ namespace IdentityPractice.Controllers
         }
 
 
-        public IActionResult PostPage(int postid)
+        public IActionResult PostPage(int postid,Post postvm)
         {
-            //Post post = _db.Posts.Include(x => x.Comments).Where(x => x.Equals(postid)).FirstOrDefault();
-            return View(/*post*/);
+            Post post;
+            if (postid == 0)
+            {
+                post = _db.Posts.Include(x => x.Comments).Include(x => x.Author).Where(x => x.PostId == postvm.PostId).FirstOrDefault();
+            }
+            else
+            {
+                post = _db.Posts.Include(x => x.Comments).Include(x => x.Author).Where(x => x.PostId == postid).FirstOrDefault();
+            }
+           
+            //Post post = _db.Posts.Find(postid);
+            return View(post);
+        }
+
+        public async Task<IActionResult> AddComment(int postid, string commenttext)
+        {
+            AppUser user = await _userManager.GetUserAsync(HttpContext.User);
+            Comment comment = new Comment() { Text = commenttext, UserId = user.Id, PostId = postid };
+            _db.Comments.Add(comment);
+            _db.SaveChanges();
+            Post post = _db.Posts.Find(postid);
+            return RedirectToAction("PostPage",post);
         }
 
     }
