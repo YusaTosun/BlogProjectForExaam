@@ -60,8 +60,9 @@ namespace IdentityPractice.Controllers
         {
 
             AppUser user = await _userManager.GetUserAsync(HttpContext.User);
-
-            postVM.Posts = _db.Posts.Include(x=>x.Comments).ToList();
+            string base64String = Convert.ToBase64String(user.ProfilePhoto);
+            ViewBag.pp = base64String;
+			postVM.Posts = _db.Posts.Include(x=>x.Comments).ToList();
             _db.Comments.ToList();
 
             return View(postVM);
