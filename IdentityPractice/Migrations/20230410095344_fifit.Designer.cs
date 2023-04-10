@@ -4,6 +4,7 @@ using IdentityPractice.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityPractice.Migrations
 {
     [DbContext(typeof(ContextDeneme))]
-    partial class ContextDenemeModelSnapshot : ModelSnapshot
+    [Migration("20230410095344_fifit")]
+    partial class fifit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,9 +60,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 1,
-
-                            ConcurrencyStamp = "ef62ca36-1248-4d07-a945-1d5e75630510",
-
+                            ConcurrencyStamp = "1b84179a-f5d4-43a4-949e-af5acde620ec",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -68,9 +68,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 2,
-
-                            ConcurrencyStamp = "6bea5ba8-e368-4911-8951-b2b6b1d17f98",
-
+                            ConcurrencyStamp = "9557a13f-7d59-44b8-934f-469351d05f55",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -168,9 +166,7 @@ namespace IdentityPractice.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-
-                            ConcurrencyStamp = "2c059fd4-821e-47ab-bcd9-5e7c52eb2902",
-
+                            ConcurrencyStamp = "12e4dbbf-8085-4ffd-ae8c-788543d19265",
                             Email = "yusatosun.yt@gmail.com",
                             EmailConfirmed = false,
                             Gender = "Erkek",
@@ -245,9 +241,10 @@ namespace IdentityPractice.Migrations
             modelBuilder.Entity("IdentityPractice.Entities.Post", b =>
                 {
                     b.Property<int>("PostId")
-
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PostId"), 1L, 1);
 
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
@@ -273,7 +270,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasIndex("AuthorId");
 
-
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Post");
                 });
@@ -397,11 +394,9 @@ namespace IdentityPractice.Migrations
                         .IsRequired();
 
                     b.HasOne("IdentityPractice.Entities.AppUser", "User")
-
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Post");
@@ -419,9 +414,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasOne("IdentityPractice.Entities.Category", "Category")
                         .WithMany("Posts")
-
-                        .HasForeignKey("PostId")
-
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -483,7 +476,6 @@ namespace IdentityPractice.Migrations
 
             modelBuilder.Entity("IdentityPractice.Entities.AppUser", b =>
                 {
-
                     b.Navigation("Posts");
                 });
 
