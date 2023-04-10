@@ -18,9 +18,9 @@ namespace IdentityPractice
 
 
                 //opt.UseSqlServer(builder.Configuration.GetConnectionString("YusaDbConnection"));
-                opt.UseSqlServer(builder.Configuration.GetConnectionString("DenizDbConnection"));
+                //opt.UseSqlServer(builder.Configuration.GetConnectionString("DenizDbConnection"));
 
-                // opt.UseSqlServer(builder.Configuration.GetConnectionString("CadoDbConnection"));
+                opt.UseSqlServer(builder.Configuration.GetConnectionString("CadoDbConnection"));
 
             });
 

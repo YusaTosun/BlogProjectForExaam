@@ -67,6 +67,10 @@ namespace IdentityPractice.Controllers
             return View(postVM);
 
         }
-
+        public IActionResult PostPage(int postid)
+        {
+            Post post = _db.Posts.Include(x => x.Comments).Where(x => x.Equals(postid)).FirstOrDefault();
+            return View(post);
+        }
     }
 }
