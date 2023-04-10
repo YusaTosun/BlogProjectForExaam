@@ -13,14 +13,15 @@ namespace IdentityPractice
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<ContextDeneme>(opt=>
+            builder.Services.AddDbContext<ContextDeneme>(opt =>
             {
 
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("YusaDbConnection"));
                 //opt.UseSqlServer(builder.Configuration.GetConnectionString("DenizDbConnection"));
-               // opt.UseSqlServer(builder.Configuration.GetConnectionString("CadoDbConnection"));
+                // opt.UseSqlServer(builder.Configuration.GetConnectionString("CadoDbConnection"));
 
             });
+
 
             builder.Services.AddIdentity<AppUser,AppRole>(opt=>
             { 

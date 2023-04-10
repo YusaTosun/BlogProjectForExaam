@@ -9,6 +9,11 @@ namespace IdentityPractice.Models.Context
     public class ContextDeneme:IdentityDbContext<AppUser,AppRole,int>
     {
         public DbSet<AppUser> Users { get; set; }
+        public DbSet<AppRole> AppRoles { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Post> Posts { get; set; }
+
         public ContextDeneme(DbContextOptions<ContextDeneme> option) : base(option)
         {
             

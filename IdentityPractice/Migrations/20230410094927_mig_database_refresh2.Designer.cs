@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityPractice.Migrations
 {
     [DbContext(typeof(ContextDeneme))]
-    [Migration("20230410083822_mig_database_refresh1")]
-    partial class mig_database_refresh1
+    [Migration("20230410094927_mig_database_refresh2")]
+    partial class mig_database_refresh2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,7 +60,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "ef62ca36-1248-4d07-a945-1d5e75630510",
+                            ConcurrencyStamp = "95d54986-41dc-4b3a-8fc9-732ddaf6eff9",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -68,7 +68,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "6bea5ba8-e368-4911-8951-b2b6b1d17f98",
+                            ConcurrencyStamp = "58479c74-cc46-48e9-8fd7-a7d26fb35dce",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -166,7 +166,7 @@ namespace IdentityPractice.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2c059fd4-821e-47ab-bcd9-5e7c52eb2902",
+                            ConcurrencyStamp = "75fcc7c0-d726-476c-9976-f2fae7f87b4f",
                             Email = "yusatosun.yt@gmail.com",
                             EmailConfirmed = false,
                             Gender = "Erkek",
@@ -199,7 +199,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("IdentityPractice.Entities.Comment", b =>
@@ -235,7 +235,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("IdentityPractice.Entities.Post", b =>
@@ -267,7 +267,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Post");
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
