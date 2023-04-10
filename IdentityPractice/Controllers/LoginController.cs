@@ -1,7 +1,11 @@
 ﻿using IdentityPractice.Entities;
 using IdentityPractice.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using System.Diagnostics;
+using System.Security.Claims;
 
 namespace IdentityPractice.Controllers
 {
@@ -30,7 +34,7 @@ namespace IdentityPractice.Controllers
 
 
 		[HttpPost]
-		public async Task<IActionResult> SignUp(UserCreateModel model)
+		public async Task<IActionResult> SignUp(UserCreateModel model,IFormFile photo)
 		{
 
 			if (ModelState.IsValid)
@@ -43,11 +47,25 @@ namespace IdentityPractice.Controllers
 
 				};
 
-				//IdentityUserRole<int> identityUserRole=  new IdentityUserRole<int> { RoleId=2,UserId=user.Id};
+                //IdentityUserRole<int> identityUserRole=  new IdentityUserRole<int> { RoleId=2,UserId=user.Id};
 
+                if (photo != null && photo.Length > 0)
+                {
+                    using (var image = Image.Load(photo.OpenReadStream()))
+                    {
+                        var ratio = (float)500 / image.Width;
+                        var height = (int)(image.Height * ratio);
+                        image.Mutate(x => x.Resize(500, height));
+                        using (var ms = new MemoryStream())
+                        {
+                            var encoder = new JpegEncoder { Quality = 80 }; // %80 sıkıştırma kalitesi
+                            image.Save(ms, encoder);
+                            user.ProfilePhoto = ms.ToArray();
+                        }
+                    }
+                }
 
-
-				var identityResult = await _userManager.CreateAsync(user, model.Password);
+                var identityResult = await _userManager.CreateAsync(user, model.Password);
 
 				if (identityResult.Succeeded)
 				{

@@ -16,6 +16,6 @@ namespace IdentityPractice.Models
         [Compare("Password",ErrorMessage = "Passwords are not Match")]
         public string ConfirmPassword { get; set; }
         public string Gender { get; set; }
-
+        public byte[]? ProfilePhoto { get; set; }
     }
 }
