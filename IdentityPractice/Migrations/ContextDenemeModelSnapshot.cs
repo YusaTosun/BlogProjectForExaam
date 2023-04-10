@@ -58,7 +58,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "097bb863-21c3-4768-a852-09c236f11433",
+                            ConcurrencyStamp = "dfc29d62-4f75-4f3b-a4ff-a8adfbb132b3",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -66,7 +66,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "7464aec9-7bc9-468e-8c87-e7ae65def32c",
+                            ConcurrencyStamp = "7ab8f89f-a7a6-45c5-bc07-a5bd53419441",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -164,7 +164,7 @@ namespace IdentityPractice.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "16786a76-1b1f-48b2-9014-65e1a486b016",
+                            ConcurrencyStamp = "760aaa51-4db9-40f8-98a1-f35b09a54473",
                             Email = "yusatosun.yt@gmail.com",
                             EmailConfirmed = false,
                             Gender = "Erkek",
@@ -268,7 +268,10 @@ namespace IdentityPractice.Migrations
             modelBuilder.Entity("IdentityPractice.Entities.Post", b =>
                 {
                     b.Property<int>("PostId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PostId"), 1L, 1);
 
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
@@ -294,6 +297,8 @@ namespace IdentityPractice.Migrations
 
                     b.HasIndex("AuthorId");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Posts");
 
                     b.HasData(
@@ -303,7 +308,7 @@ namespace IdentityPractice.Migrations
                             AuthorId = 1,
                             CategoryId = 1,
                             Content = "Lorem1",
-                            Date = new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2762),
+                            Date = new DateTime(2023, 4, 10, 16, 45, 9, 767, DateTimeKind.Local).AddTicks(6004),
                             Status = true,
                             Title = "Title1"
                         },
@@ -313,7 +318,7 @@ namespace IdentityPractice.Migrations
                             AuthorId = 1,
                             CategoryId = 2,
                             Content = "Lorem2",
-                            Date = new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2782),
+                            Date = new DateTime(2023, 4, 10, 16, 45, 9, 767, DateTimeKind.Local).AddTicks(6116),
                             Status = true,
                             Title = "Title2"
                         },
@@ -323,7 +328,7 @@ namespace IdentityPractice.Migrations
                             AuthorId = 1,
                             CategoryId = 3,
                             Content = "Lorem3",
-                            Date = new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2788),
+                            Date = new DateTime(2023, 4, 10, 16, 45, 9, 767, DateTimeKind.Local).AddTicks(6127),
                             Status = true,
                             Title = "Title3"
                         },
@@ -333,7 +338,7 @@ namespace IdentityPractice.Migrations
                             AuthorId = 1,
                             CategoryId = 3,
                             Content = "Lorem4",
-                            Date = new DateTime(2023, 4, 10, 14, 39, 24, 225, DateTimeKind.Local).AddTicks(2793),
+                            Date = new DateTime(2023, 4, 10, 16, 45, 9, 767, DateTimeKind.Local).AddTicks(6137),
                             Status = true,
                             Title = "Title4"
                         });
@@ -478,7 +483,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasOne("IdentityPractice.Entities.Category", "Category")
                         .WithMany("Posts")
-                        .HasForeignKey("PostId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

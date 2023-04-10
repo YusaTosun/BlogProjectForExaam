@@ -37,7 +37,7 @@ namespace IdentityPractice.Controllers
 		public async Task<IActionResult> SignUp(UserCreateModel model,IFormFile photo = null)
 		{
 
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid)
 			{
 				AppUser user = new AppUser()
 				{

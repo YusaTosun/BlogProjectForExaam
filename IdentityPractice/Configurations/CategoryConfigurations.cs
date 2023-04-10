@@ -9,7 +9,7 @@ namespace IdentityPractice.Configurations
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasKey(x=>x.CategoryId);
-            builder.HasMany(x=>x.Posts).WithOne(x=>x.Category).HasForeignKey(x=>x.PostId);
+            
         }
     }
 }
