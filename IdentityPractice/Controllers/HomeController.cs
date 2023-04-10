@@ -59,14 +59,36 @@ namespace IdentityPractice.Controllers
         public async Task<IActionResult> HomePage(PostVM postVM)
         {
 
-            AppUser user = await _userManager.GetUserAsync(HttpContext.User);
-            string base64String = Convert.ToBase64String(user.ProfilePhoto);
-            ViewBag.pp = base64String;
-			postVM.Posts = _db.Posts.Include(x=>x.Comments).ToList();
-            _db.Comments.ToList();
+
+            //AppUser user = await _userManager.GetUserAsync(HttpContext.User);
+
+			postVM.Posts = _db.Posts.Include(x => x.Comments).Include(x => x.Category).ToList();
+
+			_db.Comments.ToList();
+            _db.Categories.ToList();
+
 
             return View(postVM);
 
+        }
+
+
+        [HttpPost]
+        public IActionResult CategoryList(PostVM postVM,int CategoryId)
+        {
+			postVM.Posts = _db.Posts.Include(x => x.Comments).Include(x => x.Category).Where(x=>x.CategoryId.Equals(CategoryId)).ToList();
+
+
+
+
+			return View("HomePage",postVM);
+        }
+
+
+        public IActionResult PostPage(int postid)
+        {
+            Post post = _db.Posts.Include(x => x.Comments).Where(x => x.Equals(postid)).FirstOrDefault();
+            return View(post);
         }
 
     }
