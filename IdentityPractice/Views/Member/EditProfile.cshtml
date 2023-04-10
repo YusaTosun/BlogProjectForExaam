@@ -1,4 +1,8 @@
 ﻿@model UserCreateModel
+@{
+    string base64String = Convert.ToBase64String(Model.ProfilePhoto);
+}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,12 +33,12 @@
 
 <body>
 
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins" style="width:100%"> 
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins" style="width:100%">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Registration Form</h2>
-                    <form asp-action="SignUp" asp-controller="Login" enctype="multipart/form-data" method="POST">
+                    <h2 class="title">Edit Your Profile Infos</h2>
+                    <form asp-action="EditProfile" asp-controller="Member" enctype="multipart/form-data" method="POST">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
@@ -44,15 +48,15 @@
                                 </div>
                             </div>
                             @*<div class="col-2">
-                                <div class="input-group">
-                                    <label asp-for="Phone" class="label">Phone Number</label>
-                                    <input asp-for="Phone" class="input--style-4" type="text" name="phone">
-                                </div>
+                            <div class="input-group">
+                            <label asp-for="Phone" class="label">Phone Number</label>
+                            <input asp-for="Phone" class="input--style-4" type="text" name="phone">
+                            </div>
                             </div>*@
                             <div class="col-2">
                                 @*<div class="input-group">
-                                    <label asp-for="Password" class="label">Password</label>
-                                    <input asp-for="Password" class="input--style-4" type="text" name="password">
+                                <label asp-for="Password" class="label">Password</label>
+                                <input asp-for="Password" class="input--style-4" type="text" name="password">
                                 </div>*@
                             </div>
                             <div class="col-2">
@@ -71,19 +75,26 @@
                             </div>
                         </div>
                         <div class="row row-space">
-                            
+
                             <div class="col-2">
                                 <div class="input-group">
                                     <label asp-for="Email" class="label">Email</label>
                                     <input asp-for="Email" class="input--style-4" type="email" name="email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
-                                <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
-                            @*<div class="col-2">
-                                <div class="input-group">
-                                    <label asp-for="ConfirmEmail" class="label">Confirm Email</label>
-                                    <input asp-for="ConfirmEmail" class="input--style-4" type="email" name="confirmEmail">
+                            <div class="col-2">
+                                <div class="flex-shrink-0">
+                                    <img src="data:image/jpeg;base64,@(base64String)" alt="avatar"
+                                         class="rounded-circle img-fluid" style="width: 120px;height: 120px;">
                                 </div>
+                            </div>
+                            
+                            @*<div class="col-2">
+                            <div class="input-group">
+                            <label asp-for="ConfirmEmail" class="label">Confirm Email</label>
+                            <input asp-for="ConfirmEmail" class="input--style-4" type="email" name="confirmEmail">
+                            </div>
                             </div>*@
                         </div>
                         <div class="row row-space">
@@ -104,11 +115,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="col-2"> 
+
+                            <div class="col-2">
                                 <label class="label">Upload Profile Photo</label>
                                 <input type="file" name="photo" accept="image/*" />
-                                </div>
+                            </div>
                         </div>
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
