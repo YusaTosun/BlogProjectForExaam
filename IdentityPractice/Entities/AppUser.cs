@@ -13,9 +13,13 @@ namespace IdentityPractice.Entities
         public string? Phone { get; set; }
         public bool Status { get; set; }
         public List<Post> Posts { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
         public AppUser()
         {
             Posts = new List<Post>();
+            Comments = new List<Comment>();
+
         }
 
     }

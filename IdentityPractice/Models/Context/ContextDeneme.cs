@@ -1,4 +1,5 @@
-﻿using IdentityPractice.Entities;
+﻿using IdentityPractice.Configurations;
+using IdentityPractice.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,9 @@ namespace IdentityPractice.Models.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new PostConfigurations()).ApplyConfiguration(new CommentConfigurations()).ApplyConfiguration(new CategoryConfigurations());
+
+
            base.OnModelCreating(builder);
 
             #region AppRole
