@@ -56,8 +56,10 @@ namespace IdentityPractice.Controllers
 
         [Authorize(Roles = "Member")]
 
-        public IActionResult HomePage(PostVM postVM)
+        public async Task<IActionResult> HomePage(PostVM postVM)
         {
+
+            AppUser user = await _userManager.GetUserAsync(HttpContext.User);
 
             postVM.Posts = _db.Posts.Include(x=>x.Comments).ToList();
             _db.Comments.ToList();
