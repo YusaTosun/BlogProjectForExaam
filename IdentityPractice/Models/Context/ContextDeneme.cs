@@ -36,6 +36,19 @@ namespace IdentityPractice.Models.Context
             builder.Entity<IdentityUserRole<int>>().HasData(new IdentityUserRole<int>() { RoleId=1,UserId=1});
             #endregion
 
+            #region Post
+            builder.Entity<Post>().HasData(new Post { AuthorId = 1, Status = true, CategoryId = 1, Content = "Lorem1", PostId = 1, Title = "Title1" });
+            #endregion
+            #region Category
+
+            builder.Entity<Category>().HasData(new Category { CategoryId = 1, Name = "Bilim", Description = "Açıklama", Status = true });
+            builder.Entity<Category>().HasData(new Category { CategoryId = 2, Name = "Teknoloji", Description = "Açıklama", Status = true });
+            builder.Entity<Category>().HasData(new Category { CategoryId = 3, Name = "Tarih", Description = "Açıklama", Status = true });
+            builder.Entity<Category>().HasData(new Category { CategoryId = 4, Name = "Sinema", Description = "Açıklama", Status = true });
+
+            #endregion
+
+
         }
     }
 }
