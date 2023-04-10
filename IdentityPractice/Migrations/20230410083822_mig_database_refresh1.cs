@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IdentityPractice.Migrations
 {
-    public partial class mig_database_refresh4 : Migration
+    public partial class mig_database_refresh1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -239,17 +239,17 @@ namespace IdentityPractice.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedTime", "Name", "NormalizedName" },
-                values: new object[] { 1, "35abf4ac-fec5-48b0-99b2-f6b4bb756368", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "ADMIN" });
+                values: new object[] { 1, "ef62ca36-1248-4d07-a945-1d5e75630510", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedTime", "Name", "NormalizedName" },
-                values: new object[] { 2, "0da7bdf3-5cbb-4e9d-af09-26da4f23f9f3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Member", "MEMBER" });
+                values: new object[] { 2, "6bea5ba8-e368-4911-8951-b2b6b1d17f98", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Member", "MEMBER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "About", "AccessFailedCount", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "Gender", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePhoto", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, null, 0, null, "8a4c26ee-5438-42ec-992f-01369f359188", "yusatosun.yt@gmail.com", false, "Erkek", false, null, null, null, null, null, null, false, null, null, false, false, "yusa" });
+                values: new object[] { 1, null, 0, null, "2c059fd4-821e-47ab-bcd9-5e7c52eb2902", "yusatosun.yt@gmail.com", false, "Erkek", false, null, null, null, null, null, null, false, null, null, false, false, "yusa" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
