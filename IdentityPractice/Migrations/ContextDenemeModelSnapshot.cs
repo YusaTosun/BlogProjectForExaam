@@ -58,9 +58,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 1,
-
-                            ConcurrencyStamp = "95d54986-41dc-4b3a-8fc9-732ddaf6eff9",
-
+                            ConcurrencyStamp = "f117600f-9859-4391-9cd0-4e0f177f083b",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -68,9 +66,7 @@ namespace IdentityPractice.Migrations
                         new
                         {
                             Id = 2,
-
-                            ConcurrencyStamp = "58479c74-cc46-48e9-8fd7-a7d26fb35dce",
-
+                            ConcurrencyStamp = "832f52d4-8b4e-4fa5-b038-a912921847f7",
                             CreatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -141,7 +137,7 @@ namespace IdentityPractice.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Status")
+                    b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -168,15 +164,12 @@ namespace IdentityPractice.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-
-                            ConcurrencyStamp = "75fcc7c0-d726-476c-9976-f2fae7f87b4f",
-
+                            ConcurrencyStamp = "7b7e2a11-00c2-4061-9c3d-6001825764fb",
                             Email = "yusatosun.yt@gmail.com",
                             EmailConfirmed = false,
                             Gender = "Erkek",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            Status = false,
                             TwoFactorEnabled = false,
                             UserName = "yusa"
                         });
@@ -245,9 +238,7 @@ namespace IdentityPractice.Migrations
             modelBuilder.Entity("IdentityPractice.Entities.Post", b =>
                 {
                     b.Property<int>("PostId")
-
                         .HasColumnType("int");
-
 
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
@@ -273,9 +264,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasIndex("AuthorId");
 
-
                     b.ToTable("Posts");
-
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -397,11 +386,9 @@ namespace IdentityPractice.Migrations
                         .IsRequired();
 
                     b.HasOne("IdentityPractice.Entities.AppUser", "User")
-
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
-
                         .IsRequired();
 
                     b.Navigation("Post");
@@ -419,9 +406,7 @@ namespace IdentityPractice.Migrations
 
                     b.HasOne("IdentityPractice.Entities.Category", "Category")
                         .WithMany("Posts")
-
                         .HasForeignKey("PostId")
-
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -483,6 +468,7 @@ namespace IdentityPractice.Migrations
 
             modelBuilder.Entity("IdentityPractice.Entities.AppUser", b =>
                 {
+                    b.Navigation("Comments");
 
                     b.Navigation("Posts");
                 });
