@@ -34,7 +34,7 @@ namespace IdentityPractice.Controllers
 
 
 		[HttpPost]
-		public async Task<IActionResult> SignUp(UserCreateModel model,IFormFile photo)
+		public async Task<IActionResult> SignUp(UserCreateModel model,IFormFile photo = null)
 		{
 
 			if (ModelState.IsValid)

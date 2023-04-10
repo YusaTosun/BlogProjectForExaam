@@ -11,7 +11,7 @@ namespace IdentityPractice.Entities
         public string? About { get; set; }
         public string? City { get; set; }
         public string? Phone { get; set; }
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
         public List<Post> Posts { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
