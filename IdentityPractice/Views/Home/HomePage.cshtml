@@ -44,13 +44,13 @@
 
 													@foreach (var post in Model.Posts)
 													{
-														<form asp-action="CategoryList" asp-controller="Home" method="post">
-															<input type="submit" value="sahjdasd"  asp-route-CategoryId=5 class="btn btn-primary" />
+														<form asp-action="CategoryList" asp-controller="Home" asp-route-CategoryId=@post.CategoryId method="post">
+															<input type="submit" value="@post.Category.Name"  class="btn btn-primary" />
 														</form>
 													}
 
-													<form asp-action="CategoryList" asp-controller="Home" method="post">
-														<input type="submit" value="sahjdasd" asp-route-CategoryId=5 class="btn btn-primary" />
+													<form asp-action="CategoryList" asp-controller="Home" asp-route-CategoryId=5 method="post">
+														<input type="submit" value="sahjdasd"  class="btn btn-primary" />
 													</form>
 
 													@*---------------SORGU---------------*@
