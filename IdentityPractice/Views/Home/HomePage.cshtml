@@ -42,14 +42,16 @@
 												<nav class="nav nav-pills nav-gap-y-1 flex-column">
 													@*----Burası Sorgu ile yazılar içinde getirebileceğimiz bir yer.----*@
 
+													@foreach (var post in Model.Posts)
+													{
+														<form asp-action="CategoryList" asp-controller="Home" method="post">
+															<input type="submit" value="sahjdasd"  asp-route-CategoryId=5 class="btn btn-primary" />
+														</form>
+													}
 
-													<a href="javascript:void(0)" class="nav-link nav-link-faded has-icon active">All Threads</a>
-													<a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">Popular this week</a>
-													<a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">Popular all time</a>
-													<a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">Solved</a>
-													<a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">Unsolved</a>
-													<a href="javascript:void(0)" class="nav-link nav-link-faded has-icon">No replies yet</a>
-
+													<form asp-action="CategoryList" asp-controller="Home" method="post">
+														<input type="submit" value="sahjdasd" asp-route-CategoryId=5 class="btn btn-primary" />
+													</form>
 
 													@*---------------SORGU---------------*@
 												</nav>
