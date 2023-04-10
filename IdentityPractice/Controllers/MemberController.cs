@@ -56,7 +56,6 @@ namespace IdentityPractice.Controllers
 		public async Task<IActionResult> EditProfile()
         {
 			AppUser user = await _userManager.GetUserAsync(HttpContext.User);
-            user.About = "";
             UserCreateModel userCM = new UserCreateModel { Email = user.Email, Gender = user.Gender, ProfilePhoto = user.ProfilePhoto, Username = user.UserName, User=user };
 
             return View(userCM);
